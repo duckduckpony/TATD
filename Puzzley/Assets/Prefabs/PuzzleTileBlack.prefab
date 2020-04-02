@@ -52,7 +52,7 @@ MonoBehaviour:
   spacesUnder: 0
   fallDelay: 0.45
   fallSpeed: 0.3
-  matchedSprite: {fileID: 21300000, guid: 938d516f3e09d491ab028d0b95ddf7dd, type: 3}
+  matchedSprite: {fileID: 21300000, guid: 6a2416222250742cc9b783bf52401182, type: 3}
   mySpriteRenderer: {fileID: 2486693151649911519}
   body: {fileID: -5470393149508565310}
   _Matched: 0
@@ -60,6 +60,7 @@ MonoBehaviour:
   _ReadyToFall: 0
   _Floating: 0
   _Normal: 1
+  _Counted: 0
 --- !u!212 &2486693151649911519
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -85,6 +86,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -97,7 +99,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fca626917007c43de900a7ace97125e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a2416222250742cc9b783bf52401182, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

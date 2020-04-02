@@ -70,7 +70,7 @@ public class PuzzleTile : MonoBehaviour
 
     void Update()
     {
-
+        // this allows columns of blocks to fall together. checks if the tile beneath it is ready to fall. if so, it becomes ready to fall as well.
         try
         {
             if (row > 0)
@@ -275,6 +275,23 @@ public class PuzzleTile : MonoBehaviour
             }
         }           
     }
+
+    //IEnumerator Flash()
+    //{
+    //    for (int n = 0; n < 2; n++)
+    //    {
+    //        SetSpriteColor(Color.white);
+    //        yield return new WaitForSeconds(0.1f);
+    //        SetSpriteColor(spriteColor);
+    //        yield return new WaitForSeconds(0.1f);
+    //    }
+    //}
+
+    //void SetSpriteColor(Color color)
+    //{
+    //    Color originalCol = GetComponent<SpriteRenderer>().color;
+
+    //}
 }
 
 //private IEnumerator Fall()

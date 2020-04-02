@@ -16,6 +16,8 @@ public class MatchManager : MonoBehaviour
     void Start()
     {
         board = FindObjectOfType<BoardManager>();
+
+        // add different tiles to inventory list that the inventory counter will keep track of. TODO: refactor this to use variables instead of hard coding tile names
         TileInventory.Add("Red Tile", 0);
         TileInventory.Add("Pink Tile", 0);
         TileInventory.Add("Green Tile", 0);

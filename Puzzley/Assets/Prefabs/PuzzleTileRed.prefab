@@ -60,6 +60,7 @@ MonoBehaviour:
   _ReadyToFall: 0
   _Floating: 0
   _Normal: 1
+  _Counted: 0
 --- !u!212 &5100073545823322714
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -85,6 +86,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -97,7 +99,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 07f79477832724104b23d806158f7447, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 223f1d828a2b24a2bbacd15ce04360bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
