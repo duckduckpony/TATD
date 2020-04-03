@@ -12,6 +12,7 @@ public class BoardManager : MonoBehaviour
     public GameObject[] tiles; // houses tile prefabs
 
     public GameObject[,] gameboard; // multidimensional array that holds the game tiles
+    public int[,] gameboardRead;
 
     private GameObject currentLeft;
     private GameObject currentRight;
@@ -20,15 +21,29 @@ public class BoardManager : MonoBehaviour
     private float matchDestroyTimer = 0;
 
     public MatchManager _mm;
+    public LevelDataHolder _ld;
+
+    bool puzzleMode = true;
 
     void Start()
     {
         instance = GetComponent<BoardManager>();
 
         Vector2 offset = tile.GetComponent<SpriteRenderer>().bounds.size;
-        CreateBoard(offset.x, offset.y);
 
         _mm = FindObjectOfType<MatchManager>();
+        _ld = FindObjectOfType<LevelDataHolder>();
+
+        if (!puzzleMode)
+        {
+            CreateBoard(offset.x, offset.y);
+        }
+        else
+        {
+            CreateBoard_Puzzle(offset.x, offset.y);
+        }
+
+        
     }
 
     private void OnEnable()
@@ -67,7 +82,7 @@ public class BoardManager : MonoBehaviour
                 for (int y = 0; y < Random.Range(2,3); y++)
                 {
                     GameObject newTile;
-                    int tileToUse = Random.Range(0, tiles.Length);
+                    int tileToUse = Random.Range(1, tiles.Length);
 
                     // this is where the tiles are generated. the vector3 is calculating coordinates of each tile by multiplying the size of the tile by the value of the x/y of the nested for loops
                     newTile = Instantiate(tiles[tileToUse], new Vector3(startX + (xOffset * x), startY + (yOffset * y), 0), Quaternion.identity);
@@ -75,7 +90,7 @@ public class BoardManager : MonoBehaviour
                     while (MatchesAt(x, y, newTile))
                     {
                         Debug.Log("made it in here, hole.");
-                        tileToUse = Random.Range(0, tiles.Length);
+                        tileToUse = Random.Range(1, tiles.Length);
                         Destroy(newTile);
                         newTile = Instantiate(tiles[tileToUse], new Vector3(startX + (xOffset * x), startY + (yOffset * y), 0), Quaternion.identity);
                     }
@@ -93,7 +108,7 @@ public class BoardManager : MonoBehaviour
             {
                 for (int y = 0; y < ySize - Random.Range(0, 4); y++)
                 {
-                    int tileToUse = Random.Range(0, tiles.Length);
+                    int tileToUse = Random.Range(1, tiles.Length);
                     // this is where the tiles are generated. the vector3 is calculating coordinates of each tile by multiplying the size of the tile by the value of the x/y of the nested for loops
                     GameObject newTile;
                     newTile = Instantiate(tiles[tileToUse], new Vector3(startX + (xOffset * x), startY + (yOffset * y), 0), Quaternion.identity);
@@ -101,7 +116,7 @@ public class BoardManager : MonoBehaviour
                     while (MatchesAt(x, y, newTile))
                     {
                         Debug.Log("made it inside");
-                        tileToUse = Random.Range(0, tiles.Length);
+                        tileToUse = Random.Range(1, tiles.Length);
                         Destroy(newTile);
                         newTile = Instantiate(tiles[tileToUse], new Vector3(startX + (xOffset * x), startY + (yOffset * y), 0), Quaternion.identity);
                     }
@@ -116,6 +131,39 @@ public class BoardManager : MonoBehaviour
                 }
             }
             
+        }
+    }
+
+    private void CreateBoard_Puzzle(float xOffset, float yOffset)
+    {
+        gameboard = new GameObject[xSize, ySize];
+
+        // this is where the game starts to fill the board in. bottom left corner?
+        float startX = transform.position.x;
+        float startY = transform.position.y;
+
+        /* this iterates through every 'coordinate' of the gameboard. At the first x coordinate, essentially 0,
+         * it'll then iterate through each y coordinate, instantiating a new tile if the level data matrix says a tile should be there
+         * then it moves on to the next column, or x coordinate.
+        */
+        for (int x = 0; x < xSize; x++)
+        {
+            for (int y = ySize - 1; y > 0; y--)
+            {
+                int tileToUse = _ld.level.rows[y].row[x]; // get data from level data holder. each cell has a value in it which corresponds to a certain type of tile
+
+                if (tileToUse > 0) // for puzzle levels, when reading matrix, if that cell holds a 0, don't bother making any tiles. only create a tile if the matrix cell holds a number
+                {
+                    // this is where the tiles are generated. the vector3 is calculating coordinates of each tile by multiplying the size of the tile by the value of the x/y of the nested for loops
+                    GameObject newTile;
+                    newTile = Instantiate(tiles[tileToUse], new Vector3(startX + (xOffset * x), startY + (yOffset * -y) + (ySize - 1), 0), Quaternion.identity); // yoffset multiplied by negative y to invert data from leveldataholder matrix
+
+                    newTile.name = "(" + x + ", " + (-y + (ySize -1)) + ")";
+                    gameboard[x, -y + (ySize - 1)] = newTile; // y is negative to invert the way tiles show up after reading data in matrix.
+
+                    newTile.transform.parent = transform; // parents the tiles to the board manager
+                }
+            }
         }
     }
 

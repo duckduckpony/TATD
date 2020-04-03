@@ -20,6 +20,8 @@ public class SelectorController : MonoBehaviour
     public static Vector2 leftCoord;
     public static Vector2 rightCoord;
 
+    public int moves = 0;
+
     public delegate void TilesSwapped();
     public static event TilesSwapped tilesSwappedEvent;
 
@@ -78,6 +80,9 @@ public class SelectorController : MonoBehaviour
             if (boardManager.gameboard[(int)transform.position.x, (int)transform.position.y] != null || boardManager.gameboard[((int)transform.position.x + 1), (int)transform.position.y])
             {
                 if (tilesSwappedEvent != null) tilesSwappedEvent();
+
+                moves = moves + 1;
+                Debug.Log("Total # of moves is " + moves + ".");
                 //Debug.Log("swap event called");
             }
         }
