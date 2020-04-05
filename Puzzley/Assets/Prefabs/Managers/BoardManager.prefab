@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &386225873237416681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 386225873237416679}
+  - component: {fileID: 386225873237416680}
+  m_Layer: 0
+  m_Name: BoardManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &386225873237416679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386225873237416681}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &386225873237416680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386225873237416681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e6f6d1f812764c8b905a439813355c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tile: {fileID: 7592059087788390211, guid: 3d7c796cfd5184614bde6c04cc6b925d, type: 3}
+  xSize: 7
+  ySize: 7
+  tiles:
+  - {fileID: 5181558275857475591, guid: 026d67810e67b4cf2a1e52b071c0d687, type: 3}
+  - {fileID: 5884526261224823339, guid: f550bf83a21c2498293cc567227ba52d, type: 3}
+  - {fileID: 6741165951760792985, guid: 52eee7c24da984d42b1176b5d9730b12, type: 3}
+  - {fileID: 8435456245606684399, guid: d99e93463cbb342748973654b280a0c1, type: 3}
+  - {fileID: 2713364382511281050, guid: 36dec54d1517746d89aed886ab222724, type: 3}
+  - {fileID: 4265149229237177733, guid: 4fa8d69914f9c405db1417f032ccf4ce, type: 3}
+  - {fileID: 669133359781589674, guid: bb6ebd02622a6420f942d71a332ddb95, type: 3}
+  matchDestroyDelay: 2
+  _mm: {fileID: 0}
+  _ld: {fileID: 0}

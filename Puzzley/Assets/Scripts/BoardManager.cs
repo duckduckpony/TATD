@@ -211,7 +211,7 @@ public class BoardManager : MonoBehaviour
         return false;
     }
 
-    private void DestroyMatchesAt(int column, int row)
+    private IEnumerator DestroyMatchesAt(int column, int row)
     {
         if (gameboard[column, row].GetComponent<PuzzleTile>()._Matched)
         {
@@ -219,14 +219,16 @@ public class BoardManager : MonoBehaviour
 
             //if (matchDestroyTimer > matchDestroyDelay)
             //{
-            Debug.Log(gameboard[column, row].GetComponent<PuzzleTile>().tag + ": " + _mm.TileInventory[gameboard[column, row].GetComponent<PuzzleTile>().tag]);
+            //Debug.Log(gameboard[column, row].GetComponent<PuzzleTile>().tag + ": " + _mm.TileInventory[gameboard[column, row].GetComponent<PuzzleTile>().tag]);
 
-
+            yield return new WaitForSeconds(0.5f);
             Destroy(gameboard[column, row]);
             gameboard[column, row] = null;
-                //matchDestroyTimer = 0;
+            //matchDestroyTimer = 0;
             //}
         }
+
+        
     }
 
     public void DestroyAllMatches()
@@ -238,7 +240,8 @@ public class BoardManager : MonoBehaviour
             {
                 if (gameboard[x, y] != null)
                 {
-                    DestroyMatchesAt(x, y);
+                    StartCoroutine(DestroyMatchesAt(x, y));
+                    
                 }
             }
         }

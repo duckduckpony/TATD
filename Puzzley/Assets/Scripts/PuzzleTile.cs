@@ -34,6 +34,7 @@ public class PuzzleTile : MonoBehaviour
     public bool _Floating = false;
     public bool _Normal = true;
     public bool _Counted = false;
+    public bool _Switched = false;
 
     //private GameObject leftTile1;
     //private GameObject rightTile1;
@@ -70,6 +71,7 @@ public class PuzzleTile : MonoBehaviour
 
     void Update()
     {
+
         // this allows columns of blocks to fall together. checks if the tile beneath it is ready to fall. if so, it becomes ready to fall as well.
         try
         {
@@ -192,7 +194,13 @@ public class PuzzleTile : MonoBehaviour
             }
         }
 
-        boardManager.DestroyAllMatches();
+
+        if (_Matched && !_Switched)
+        {
+            this.mySpriteRenderer.sprite = matchedSprite;
+            boardManager.DestroyAllMatches();
+            _Switched = true;
+        }
 
         // checking where we want to be. column/row get changed in swapmove function, so when that happens, the target will be updated here
         targetX = column;
@@ -221,6 +229,7 @@ public class PuzzleTile : MonoBehaviour
         //{
         //    Invoke("Fall", 2.0f);
         //}
+
     }
 
     

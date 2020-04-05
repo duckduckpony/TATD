@@ -24,13 +24,11 @@ public class LevelDataHolder : MonoBehaviour
         if (selector.moves > movesLimit && !lose)
         {
             lose = true;
-            Debug.Log("Ya dun lost.");
         }
 
         if (_bm.transform.childCount == 0 && !lose && !win)
         {
             win = true;
-            Debug.Log("Ya dun won.");
         }
 
     }

@@ -51,13 +51,15 @@ public class MatchManager : MonoBehaviour
                         {
                             if (leftTile.tag == currentTile.tag && rightTile.tag == currentTile.tag)
                             {
+                                //leftTile.GetComponent<SpriteRenderer>().sprite = matchedSprite;
+                                //rightTile.GetComponent<SpriteRenderer>().sprite = matchedSprite;
+                                //currentTile.GetComponent<SpriteRenderer>().sprite = matchedSprite;
+
                                 leftTile.GetComponent<PuzzleTile>()._Matched = true;
                                 rightTile.GetComponent<PuzzleTile>()._Matched = true;
                                 currentTile.GetComponent<PuzzleTile>()._Matched = true;
 
-                                leftTile.GetComponent<SpriteRenderer>().sprite = matchedSprite;
-                                rightTile.GetComponent<SpriteRenderer>().sprite = matchedSprite;
-                                currentTile.GetComponent<SpriteRenderer>().sprite = matchedSprite;
+                                
 
                                 if (!leftTile.GetComponent<PuzzleTile>()._Counted)
                                 {
@@ -88,9 +90,9 @@ public class MatchManager : MonoBehaviour
                                 upTile.GetComponent<PuzzleTile>()._Matched = true;
                                 currentTile.GetComponent<PuzzleTile>()._Matched = true;
 
-                                downTile.GetComponent<SpriteRenderer>().sprite = matchedSprite;
-                                upTile.GetComponent<SpriteRenderer>().sprite = matchedSprite;
-                                currentTile.GetComponent<SpriteRenderer>().sprite = matchedSprite;
+                                //downTile.GetComponent<SpriteRenderer>().sprite = matchedSprite;
+                                //upTile.GetComponent<SpriteRenderer>().sprite = matchedSprite;
+                                //currentTile.GetComponent<SpriteRenderer>().sprite = matchedSprite;
 
                                 if (!downTile.GetComponent<PuzzleTile>()._Counted)
                                 {
