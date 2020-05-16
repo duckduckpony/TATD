@@ -96,7 +96,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -497,11 +496,6 @@ PrefabInstance:
       propertyPath: levelDataHolder
       value: 
       objectReference: {fileID: 108889221}
-    - target: {fileID: -1516470827142153351, guid: a069340dc67124977987fff3ca016681,
-        type: 3}
-      propertyPath: matchTimer
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5299859071968661439, guid: a069340dc67124977987fff3ca016681,
         type: 3}
       propertyPath: m_Name
@@ -1024,7 +1018,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1639,7 +1632,6 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2676,11 +2668,6 @@ PrefabInstance:
       propertyPath: level.rows.Array.data[4].row.Array.data[5]
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7678853430387564866, guid: f1a933211aa55403884d634e18bf157b,
-        type: 3}
-      propertyPath: _selector
-      value: 
-      objectReference: {fileID: 213456026}
     - target: {fileID: 7678853430387564867, guid: f1a933211aa55403884d634e18bf157b,
         type: 3}
       propertyPath: m_Name
