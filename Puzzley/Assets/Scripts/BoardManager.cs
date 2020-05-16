@@ -22,6 +22,7 @@ public class BoardManager : MonoBehaviour
 
     public MatchManager _mm;
     public LevelDataHolder _ld;
+    public SelectorController _sc;
 
     bool puzzleMode = true;
 
@@ -33,6 +34,7 @@ public class BoardManager : MonoBehaviour
 
         _mm = FindObjectOfType<MatchManager>();
         _ld = FindObjectOfType<LevelDataHolder>();
+        _sc = FindObjectOfType<SelectorController>();
 
         if (!puzzleMode)
         {
@@ -167,11 +169,6 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    void CheckMatches()
-    {
-
-    }
-
     // this method is used to make sure board generates without any matches to start
     private bool MatchesAt(int column, int row, GameObject currentTile)
     {
@@ -215,17 +212,13 @@ public class BoardManager : MonoBehaviour
     {
         if (gameboard[column, row].GetComponent<PuzzleTile>()._Matched)
         {
-            //matchDestroyTimer += Time.deltaTime;
-
-            //if (matchDestroyTimer > matchDestroyDelay)
-            //{
-            //Debug.Log(gameboard[column, row].GetComponent<PuzzleTile>().tag + ": " + _mm.TileInventory[gameboard[column, row].GetComponent<PuzzleTile>().tag]);
-
             yield return new WaitForSeconds(0.5f);
+
             Destroy(gameboard[column, row]);
             gameboard[column, row] = null;
-            //matchDestroyTimer = 0;
-            //}
+
+
+            // TODO: iterate through board after last move to see if any tiles are matched. if they are, keep going. keep iterating until there's either only unmatched tiles or none at all? IDK.
         }
 
         
@@ -247,21 +240,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    //public IEnumerator handleFalling()
-    //{
-    //    for (int x = 0; x < xSize; x++)
-    //    {
-    //        for (int y = 0; y < ySize; y++)
-    //        {
-    //            if (gameboard[x,y].GetComponent<PuzzleTile>()._Falling)
-    //            {
-
-    //            }
-    //        }
-    //    }
-    //    yield return new WaitForSeconds(floatTime);
-    //}
-
+    
     //void TilesSwappedListener()
     //{
 

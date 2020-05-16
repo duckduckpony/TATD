@@ -185,7 +185,7 @@ public class PuzzleTile : MonoBehaviour
             else
             {
                 //Directly set the position
-                Debug.Log("Made it to where falling should be false");
+                //Debug.Log("Made it to where falling should be false");
                 tempPos = new Vector2(transform.position.x, targetY);
                 transform.position = tempPos;
                 _Falling = false;

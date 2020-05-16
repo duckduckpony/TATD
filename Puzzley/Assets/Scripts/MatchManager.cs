@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MatchManager : MonoBehaviour
 {
     private BoardManager board;
+    public WinLose wlConditions;
     public List<GameObject> currentMatches = new List<GameObject>();
 
     public Dictionary<string, int> TileInventory = new Dictionary<string, int>();
@@ -25,6 +26,7 @@ public class MatchManager : MonoBehaviour
         TileInventory.Add("Orange Tile", 0);
         TileInventory.Add("Blue Tile", 0);
 
+        wlConditions = FindObjectOfType<WinLose>();
     }
 
     public void FindAllMatchesCall()
@@ -58,6 +60,8 @@ public class MatchManager : MonoBehaviour
                                 leftTile.GetComponent<PuzzleTile>()._Matched = true;
                                 rightTile.GetComponent<PuzzleTile>()._Matched = true;
                                 currentTile.GetComponent<PuzzleTile>()._Matched = true;
+
+                                wlConditions.matchTimer = wlConditions.matchTimer + 0.25f;
 
                                 
 
