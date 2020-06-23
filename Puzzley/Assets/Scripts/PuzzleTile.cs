@@ -100,36 +100,6 @@ public class PuzzleTile : MonoBehaviour
             _Normal = false;
         }
 
-        //if (_Floating)
-        //{
-        //    // see how many empty spaces are beneath the tile
-        //    spacesUnder = 0;
-        //    int i = 1;
-            
-        //    // checks if tile is 
-        //    if (row > 1)
-        //    {
-        //        while ((row - i) > -1 && boardManager.gameboard[column, row - i] == null)
-        //        {
-        //            i++;
-        //            spacesUnder++;
-        //        }
-        //        boardManager.gameboard[column, row] = null;
-        //        row = row - spacesUnder;
-        //        boardManager.gameboard[column, row] = this.gameObject;
-        //    }
-        //    else
-        //    {
-        //        boardManager.gameboard[column, row] = null;
-        //        row = 0;
-        //        boardManager.gameboard[column, row] = this.gameObject;
-        //        spacesUnder = 1;
-        //    }
-            
-        //    _Floating = false;
-        //    _ReadyToFall = true;
-        //}
-
         if (_ReadyToFall)
         {
             fallTimer += Time.deltaTime;
@@ -185,7 +155,7 @@ public class PuzzleTile : MonoBehaviour
             else
             {
                 //Directly set the position
-                Debug.Log("Made it to where falling should be false");
+                //Debug.Log("Made it to where falling should be false");
                 tempPos = new Vector2(transform.position.x, targetY);
                 transform.position = tempPos;
                 _Falling = false;

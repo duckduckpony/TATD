@@ -6,10 +6,15 @@ using UnityEngine.UI;
 public class MatchManager : MonoBehaviour
 {
     private BoardManager board;
+    public WinLose wlConditions;
+    public SelectorController _sc;
+    public LevelDataHolder _ldh;
     public List<GameObject> currentMatches = new List<GameObject>();
 
     public Dictionary<string, int> TileInventory = new Dictionary<string, int>();
     public Text invText;
+
+    public bool matchCounted = false;
 
     public Sprite matchedSprite;
 
@@ -25,6 +30,9 @@ public class MatchManager : MonoBehaviour
         TileInventory.Add("Orange Tile", 0);
         TileInventory.Add("Blue Tile", 0);
 
+        wlConditions = FindObjectOfType<WinLose>();
+        _sc = FindObjectOfType<SelectorController>();
+        _ldh = FindObjectOfType<LevelDataHolder>();
     }
 
     public void FindAllMatchesCall()
@@ -59,6 +67,13 @@ public class MatchManager : MonoBehaviour
                                 rightTile.GetComponent<PuzzleTile>()._Matched = true;
                                 currentTile.GetComponent<PuzzleTile>()._Matched = true;
 
+                                if (_sc.moves >= _ldh.movesLimit && !matchCounted)
+                                {
+                                    wlConditions.matchTimer = wlConditions.matchTimer + 0.9f;
+                                    Debug.Log("Added time from " + currentTile.name);
+                                    matchCounted = true;
+                                }
+
                                 
 
                                 if (!leftTile.GetComponent<PuzzleTile>()._Counted)
@@ -89,6 +104,13 @@ public class MatchManager : MonoBehaviour
                                 downTile.GetComponent<PuzzleTile>()._Matched = true;
                                 upTile.GetComponent<PuzzleTile>()._Matched = true;
                                 currentTile.GetComponent<PuzzleTile>()._Matched = true;
+
+                                if(_sc.moves >= _ldh.movesLimit && !matchCounted)
+                                {
+                                    wlConditions.matchTimer = wlConditions.matchTimer + 0.9f;
+                                    Debug.Log("Added time.");
+                                    matchCounted = true;
+                                }
 
                                 //downTile.GetComponent<SpriteRenderer>().sprite = matchedSprite;
                                 //upTile.GetComponent<SpriteRenderer>().sprite = matchedSprite;
